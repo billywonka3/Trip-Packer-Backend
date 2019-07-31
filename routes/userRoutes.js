@@ -7,6 +7,7 @@ const bcrypt      = require('bcryptjs');
 const passport    = require('passport');
 
 
+// Sign-Up Route
 router.post('/signup', (req, res, next) => {
   const userNameVar = req.body.username;
   const password = req.body.password;
