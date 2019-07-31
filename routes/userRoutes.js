@@ -21,7 +21,7 @@ router.post('/signup', (req, res, next) => {
   //     res.status(400).json({ message: 'Please make your password at least 8 characters long for security purposes.' });
   //     return;
   // }
-  // this is not for testing only add something like this after the featurw works correctly
+  // this is not for testing, only add something like this after the feature works correctly
 
   User.findOne({ username:userNameVar }, (err, foundUser) => {
 

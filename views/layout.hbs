@@ -6,20 +6,35 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-  <form id="geosearch">
-    <label for="address">Address</label>
-    <input id="address" type="text" class="width70" style="text-transform:capitalize;" placeholder="Type address here to get lat long" required="">
-    <button title="Sumbit Location" class="button" id="btnfind">Find</button><br>
-    <small>Write city name with country code for better results.</small><br>
-    <span id="loading" style="display: none;">Looking for the lat long, please wait...</span>
-  </form>
 
   {{{body}}}
 
   <script src="/javascripts/script.js"></script>
-  {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> --}}
-  <script type='text/javascript' src=`https://darksky.net/widget/default/25.7743,-80.1937/us12/en.js?width=100%&height=350&title=Miami, Florida&textColor=333333&bgColor=FFFFFF&transparency=false&skyColor=undefined&fontFamily=Default&customFont=&units=us&htColor=333333&ltColor=C7C7C7&displaySum=yes&displayHeader=yes`></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=[AIzaSyDd4_Pz6EprCD1gFI6IrfSy0izMEl6guug]&libraries=places,geometry"></script>
 </body>
+
+
+
+
+  {{!-- <form id="geosearch">
+    <label for="address">Address</label>
+    <input id="address" type="text" class="width70" style="text-transform:capitalize;" placeholder="Type address here to get lat long" required="">
+    <button title="Sumbit Location" class="button" id="btnfind">Find</button><br>
+    <small>Write city name with country code for better results.</small><br>
+    <span id="loading" style="display: none;">Looking for the latitude & longitude, please wait...</span>
+  </form>
+
+  <div class="row">
+    <div class="col-6 m2">
+      <label for="lat">Latitude</label>
+      <input type="text" name="lat" id="lat" placeholder="lat coordinate">
+    </div>
+    <div class="col-6 m2">
+      <label for="lng">Longitude</label>
+      <input type="text" name="lng" id="lng" placeholder="long coordinate">
+    </div>
+  </div> --}}

@@ -18,7 +18,7 @@ require('./config/passport-config');
 mongoose.Promise = Promise;
 mongoose
   // .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
-  .connect('mongodb://localhost/week8---trip-packer/backend-express/', {useMongoClient: true})
+  .connect('mongodb://localhost/express-backend', {useNewUrlParser: true})
   .then(() => {
     console.log(`Connected to Mongo! `)
   }).catch(err => {
@@ -39,20 +39,20 @@ app.use(cookieParser());
 
 
 // Express View engine setup
-app.use(require('node-sass-middleware')({
-  src:  path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
-  sourceMap: true
-}));
+// app.use(require('node-sass-middleware')({
+//   src:  path.join(__dirname, 'public'),
+//   dest: path.join(__dirname, 'public'),
+//   sourceMap: true
+// }));
       
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'hbs');
+// app.use(express.static(path.join(__dirname, 'public')));
+// app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 // default value for title local
-app.locals.title = 'Trip-Packer : Take the First Step on a new Journey';
+// app.locals.title = 'Trip-Packer : Take the First Step on a new Journey';
 
 app.use(session({
   secret:"some secret goes here",
@@ -81,7 +81,7 @@ const userRoutes = require('./routes/userRoutes');
 app.use('/api/auth', userRoutes);
 
 // const projectRoutes = require('./routes/itemRoutes');
-// app.use('/___', projectRoutes);
+// app.use('/api/itemlist', itemRoutes);
 // ==========================================
 
 module.exports = app;
