@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const Item = require('../models/Item');
-const Category = require('../models/Category');
+const Trip = require('../models/Trip');
 
 
 router.get('/details/:id', (req, res, next)=>{
@@ -21,7 +21,7 @@ router.get('/details/:id', (req, res, next)=>{
 
 router.post('/', (req, res, next)=>{
 
-    let categoryID = req.body.theCategory;
+    let tripID = req.body.theTrip;
 
     Item.create({
         subcategory: req.body.theSubcategory,
@@ -31,7 +31,7 @@ router.post('/', (req, res, next)=>{
 
     .then((theItem)=>{ 
 
-        Category.findByIdAndUpdate(categoryID, {
+        Trip.findByIdAndUpdate(tripID, {
             $push: {items: theItem._id}
         })
 
@@ -80,7 +80,7 @@ router.delete('/:id', (req, res, next)=>{
     .catch((err)=>{
         res.json(err)
     })
-    
+
 })
 
 

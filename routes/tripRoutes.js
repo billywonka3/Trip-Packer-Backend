@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 
-const Category = require('../models/Category');
+const Trip = require('../models/Trip');
 const Item    = require('../models/Item');
 
 
@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
   // this route is actualy localhost:3000/api/categories 
   //  because of the preface i put on this routes file in app.js
 
-  Category.find().populate('items')
+  Trip.find().populate('items')
   .then((allTheCategories)=>{
     res.json(allTheCategories);
   })
@@ -24,10 +24,10 @@ router.get('/', (req, res, next) => {
 
 // router.get('/details/:id', (req, res, next)=>{
 
-//   Category.findById(req.params.id).populate('items')
+//   Trip.findById(req.params.id).populate('items')
 
-//   .then((singleCategory)=>{
-//     res.json(singleCategory);
+//   .then((singleTrip)=>{
+//     res.json(singleTrip);
 //   })
 
 //   .catch((err)=>{
@@ -39,14 +39,14 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next)=>{
 
-  Category.create({
+  Trip.create({
     title: req.body.theTitle,
     items: [],
     owner: req.user._id
   })
 
-  .then((singleCategory)=>{
-    res.json(singleCategory);
+  .then((singleTrip)=>{
+    res.json(singleTrip);
   })
 
   .catch((err)=>{
@@ -58,12 +58,12 @@ router.post('/', (req, res, next)=>{
 
 // router.post('/update/:id', (req, res, next)=>{
 
-//   Category.findByIdAndUpdate(req.params.id, {
+//   Trip.findByIdAndUpdate(req.params.id, {
 //     title: req.body.theTitle,
 //   })
 
-//   .then((singleCategory)=>{
-//     res.json(singleCategory);
+//   .then((singleTrip)=>{
+//     res.json(singleTrip);
 //   })
 
 //   .catch((err)=>{
@@ -75,16 +75,16 @@ router.post('/', (req, res, next)=>{
 
 // router.delete('/:id', (req, res, next)=>{
 
-//   Category.findById(req.params.id)
-//   .then((theCategory)=>{
+//   Trip.findById(req.params.id)
+//   .then((theTrip)=>{
 
-//     theCategory.items.forEach(eachItemID => {
+//     theTrip.items.forEach(eachItemID => {
 //       Item.findByIdAndRemove(eachItemID)
 //     })
 
-//     Category.findByIdAndRemove(theCategory._id)
-//     .then((singleCategory)=>{
-//       res.json(singleCategory);
+//     Trip.findByIdAndRemove(theTrip._id)
+//     .then((singleTrip)=>{
+//       res.json(singleTrip);
 //     })
 
 //     .catch((err)=>{

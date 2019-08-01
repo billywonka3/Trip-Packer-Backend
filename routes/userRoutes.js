@@ -24,7 +24,6 @@ router.post('/signup', (req, res, next) => {
   // this is not for testing, only add something like this after the feature works correctly
 
   User.findOne({ username:userNameVar }, (err, foundUser) => {
-
     if(err){
         res.status(500).json({message: "Username check went bad."});
         return;
@@ -52,7 +51,6 @@ router.post('/signup', (req, res, next) => {
       // Automatically log in user after sign up
       // .login() here is actually predefined passport method
       req.login(aNewUser, (err) => {
-
           if (err) {
               res.status(500).json({ message: 'Login after signup went bad.' });
               return;

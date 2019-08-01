@@ -77,11 +77,11 @@ app.use(cors({
 const userRoutes = require('./routes/userRoutes');
 app.use('/api/auth', userRoutes);
 
-const itemRoutes = require('./routes/categoryRoutes');
-app.use('/api/categorylist', categoryRoutes);
+const tripRoutes = require('./routes/tripRoutes');
+app.use('/api/triplist', tripRoutes);
 
 const itemRoutes = require('./routes/itemRoutes');
-app.use('/api/item', itemRoutes);
+app.use('/api/items', itemRoutes);
 
 // ==========================================
 
