@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
-// Express View engine setup
+// Express View engine setup (NOT NECESSARY FOR FULLSTACK)
 // app.use(require('node-sass-middleware')({
 //   src:  path.join(__dirname, 'public'),
 //   dest: path.join(__dirname, 'public'),
@@ -50,9 +50,9 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 // app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
-
 // default value for title local
 // app.locals.title = 'Trip-Packer : Take the First Step on a new Journey';
+
 
 app.use(session({
   secret:"some secret goes here",
@@ -74,14 +74,15 @@ app.use(cors({
 
 
 // ================ ROUTES ==================
-const index = require('./routes/index');
-app.use('/', index);
-
 const userRoutes = require('./routes/userRoutes');
 app.use('/api/auth', userRoutes);
 
-// const projectRoutes = require('./routes/itemRoutes');
-// app.use('/api/itemlist', itemRoutes);
+const itemRoutes = require('./routes/categoryRoutes');
+app.use('/api/categorylist', categoryRoutes);
+
+const itemRoutes = require('./routes/itemRoutes');
+app.use('/api/item', itemRoutes);
+
 // ==========================================
 
 module.exports = app;
