@@ -7,12 +7,12 @@ const Item    = require('../models/Item');
 
 /* GET home page */
 router.get('/', (req, res, next) => {
-  // this route is actualy localhost:3000/api/categories 
+  // this route is actualy localhost:3000/api/trips 
   //  because of the preface i put on this routes file in app.js
 
   Trip.find().populate('items')
-  .then((allTheCategories)=>{
-    res.json(allTheCategories);
+  .then((allTheTrips)=>{
+    res.json(allTheTrips);
   })
 
   .catch((err)=>{

@@ -26,7 +26,7 @@ router.post('/', (req, res, next)=>{
     Item.create({
         subcategory: req.body.theSubcategory,
         name: req.body.theName,
-        weight: req.body.theweight,
+        // weight: req.body.theweight,
     })
 
     .then((theItem)=>{ 
@@ -57,7 +57,7 @@ router.post('/update/:id', (req, res, next)=>{
     Item.findByIdAndUpdate(req.params.id, {
       subcategory: req.body.theSubcategory,
       name: req.body.theName,
-      weight: req.body.theWeight,
+    //   weight: req.body.theWeight,
     })
     .then((response)=>{
         res.json(response)
