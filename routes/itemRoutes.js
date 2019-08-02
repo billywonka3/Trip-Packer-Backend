@@ -57,17 +57,14 @@ router.post('/update/:id', (req, res, next)=>{
     Item.findByIdAndUpdate(req.params.id, {
       subcategory: req.body.theSubcategory,
       name: req.body.theName,
-      weight: req.body.theweight,
+      weight: req.body.theWeight,
     })
-
     .then((response)=>{
         res.json(response)
     })
-
     .catch((err)=>{
         res.json(err)
     })
-
 })
 
 router.delete('/:id', (req, res, next)=>{

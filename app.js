@@ -38,27 +38,28 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
-// Express View engine setup (NOT NECESSARY FOR FULLSTACK)
-// app.use(require('node-sass-middleware')({
-//   src:  path.join(__dirname, 'public'),
-//   dest: path.join(__dirname, 'public'),
-//   sourceMap: true
-// }));
+// Express View engine setup
+app.use(require('node-sass-middleware')({
+  src:  path.join(__dirname, 'public'),
+  dest: path.join(__dirname, 'public'),
+  sourceMap: true
+}));
       
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'hbs');
-// app.use(express.static(path.join(__dirname, 'public')));
-// app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
-
-// default value for title local
-// app.locals.title = 'Trip-Packer : Take the First Step on a new Journey';
-
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 app.use(session({
   secret:"some secret goes here",
   resave: true,
   saveUninitialized: true
 }));
+
+
+// default value for title local
+// app.locals.title = 'Trip-Packer : Take the First Step on a new Journey';
+
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -78,7 +79,7 @@ const userRoutes = require('./routes/userRoutes');
 app.use('/api/auth', userRoutes);
 
 const tripRoutes = require('./routes/tripRoutes');
-app.use('/api/triplist', tripRoutes);
+app.use('/api/trips', tripRoutes);
 
 const itemRoutes = require('./routes/itemRoutes');
 app.use('/api/items', itemRoutes);
