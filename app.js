@@ -84,6 +84,12 @@ app.use('/api/trips', tripRoutes);
 const itemRoutes = require('./routes/itemRoutes');
 app.use('/api/items', itemRoutes);
 
+const toiletriesRoutes = require('./routes/toiletriesRoutes');
+app.use('/api/toiletries', toiletriesRoutes);
+
+const electronicsRoutes = require('./routes/electronicsRoutes');
+app.use('/api/electronics', electronicsRoutes);
+
 // ==========================================
 
 module.exports = app;

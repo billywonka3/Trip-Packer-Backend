@@ -3,14 +3,15 @@ const router  = express.Router();
 
 const Trip = require('../models/Trip');
 const Item    = require('../models/Item');
-
+const Toiletries    = require('../models/Toiletries');
+const Electronics    = require('../models/Electronics');
 
 /* GET home page */
 router.get('/', (req, res, next) => {
   // this route is actualy localhost:3000/api/trips 
   //  because of the preface i put on this routes file in app.js
 
-  Trip.find().populate('items')
+  Trip.find().populate('items', 'toiletries', 'electronics')
   .then((allTheTrips)=>{
     res.json(allTheTrips);
   })
@@ -24,7 +25,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/details/:id', (req, res, next)=>{
 
-  Trip.findById(req.params.id).populate('items')
+  Trip.findById(req.params.id).populate('items', 'toiletries', 'electronics')
 
   .then((singleTrip)=>{
     res.json(singleTrip);
@@ -43,6 +44,8 @@ router.post('/', (req, res, next)=>{
     title: req.body.theTitle,
     description: req.body.theDescription,
     items: [],
+    toiletries: [],
+    electronics: [],
     owner: req.user._id
   })
 
@@ -82,6 +85,12 @@ router.delete('/:id', (req, res, next)=>{
 
     theTrip.items.forEach(eachItemID => {
       Item.findByIdAndRemove(eachItemID)
+    })
+    theTrip.toiletries.forEach(eachToiletriesID => {
+      Toiletries.findByIdAndRemove(eachToiletriesID)
+    })
+    theTrip.electronics.forEach(eachElectronicsID => {
+      Electronics.findByIdAndRemove(eachElectronicsID)
     })
 
     Trip.findByIdAndRemove(theTrip._id)

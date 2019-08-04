@@ -2,10 +2,11 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const itemSchema = new Schema({
-  subcategory: String,
+  category: String,
   name: String,
   // weight: Number,
 });
+
 
 const Item = mongoose.model('Item', itemSchema);
 

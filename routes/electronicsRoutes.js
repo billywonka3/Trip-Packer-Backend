@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-const Item = require('../models/Item');
+const Electronics = require('../models/Electronics');
 const Trip = require('../models/Trip');
 
 
 router.get('/details/:id', (req, res, next)=>{
 
-    Item.findById(req.params.id)
-    .then((theItem)=>{
-        res.json(theItem)
+    Electronics.findById(req.params.id)
+    .then((theElectronics)=>{
+        res.json(theElectronics)
     })
 
     .catch((err)=>{
@@ -23,20 +23,19 @@ router.post('/', (req, res, next)=>{
 
     let tripID = req.body.theTrip;
 
-    Item.create({
-        category: req.body.theCategory,
+    Electronics.create({
         name: req.body.theName,
         // weight: req.body.theweight,
     })
 
-    .then((theItem)=>{ 
+    .then((theElectronics)=>{ 
 
         Trip.findByIdAndUpdate(tripID, {
-            $push: {items: theItem._id}
+            $push: {Electronicss: theElectronics._id}
         })
 
         .then((response)=>{
-            res.json({response, theItem})
+            res.json({response, theElectronics})
         })
 
         .catch((err)=>{
@@ -54,8 +53,7 @@ router.post('/', (req, res, next)=>{
 
 router.post('/update/:id', (req, res, next)=>{
 
-    Item.findByIdAndUpdate(req.params.id, {
-      category: req.body.theCategory,
+    Electronics.findByIdAndUpdate(req.params.id, {
       name: req.body.theName,
     //   weight: req.body.theWeight,
     })
@@ -69,7 +67,7 @@ router.post('/update/:id', (req, res, next)=>{
 
 router.delete('/:id', (req, res, next)=>{
 
-    Item.findByIdAndRemove(req.params.id)
+    Electronics.findByIdAndRemove(req.params.id)
     .then((response)=>{
         res.json(response)
     })
