@@ -40,9 +40,6 @@ router.post('/signup', (req, res, next) => {
     const aNewUser = new User({
       username:userNameVar,
       password: hashPass,
-      myItems: [],
-      myToiletries: [],
-      myElectronics: [],
     });
 
     aNewUser.save(err => {

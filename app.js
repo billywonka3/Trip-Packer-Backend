@@ -81,8 +81,8 @@ app.use('/api/auth', userRoutes);
 const tripRoutes = require('./routes/tripRoutes');
 app.use('/api/trips', tripRoutes);
 
-const itemRoutes = require('./routes/itemRoutes');
-app.use('/api/items', itemRoutes);
+const clothingRoutes = require('./routes/clothingRoutes');
+app.use('/api/clothing', clothingRoutes);
 
 const toiletriesRoutes = require('./routes/toiletriesRoutes');
 app.use('/api/toiletries', toiletriesRoutes);

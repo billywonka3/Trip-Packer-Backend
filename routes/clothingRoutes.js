@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-const Item = require('../models/Item');
+const Clothing = require('../models/Clothing');
 const Trip = require('../models/Trip');
 
 
 router.get('/details/:id', (req, res, next)=>{
 
-    Item.findById(req.params.id)
-    .then((theItem)=>{
-        res.json(theItem)
+    Clothing.findById(req.params.id)
+    .then((theClothing)=>{
+        res.json(theClothing)
     })
 
     .catch((err)=>{
@@ -23,20 +23,20 @@ router.post('/', (req, res, next)=>{
 
     let tripID = req.body.theTrip;
 
-    Item.create({
+    Clothing.create({
         category: req.body.theCategory,
         name: req.body.theName,
         // weight: req.body.theweight,
     })
 
-    .then((theItem)=>{ 
+    .then((theClothing)=>{ 
 
         Trip.findByIdAndUpdate(tripID, {
-            $push: {items: theItem._id}
+            $push: {clothing: theClothing._id}
         }, {new: true})
 
         .then((response)=>{
-            res.json({response, theItem})
+            res.json({response, theClothing})
         })
 
         .catch((err)=>{
@@ -54,7 +54,7 @@ router.post('/', (req, res, next)=>{
 
 router.post('/update/:id', (req, res, next)=>{
 
-    Item.findByIdAndUpdate(req.params.id, {
+    Clothing.findByIdAndUpdate(req.params.id, {
       category: req.body.theCategory,
       name: req.body.theName,
     //   weight: req.body.theWeight,
@@ -69,7 +69,7 @@ router.post('/update/:id', (req, res, next)=>{
 
 router.delete('/:id', (req, res, next)=>{
 
-    Item.findByIdAndRemove(req.params.id)
+    Clothing.findByIdAndRemove(req.params.id)
     .then((response)=>{
         res.json(response)
     })

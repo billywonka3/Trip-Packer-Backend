@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
-const itemSchema = new Schema({
+const clothingSchema = new Schema({
   category: String,
   name: String,
   // weight: Number,
 });
 
 
-const Item = mongoose.model('Item', itemSchema);
+const Clothing = mongoose.model('Clothing', clothingSchema);
 
-module.exports = Item;
+module.exports = Clothing;

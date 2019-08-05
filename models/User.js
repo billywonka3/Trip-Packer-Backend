@@ -5,8 +5,8 @@ const userSchema = new Schema({
   username: String,
   password: String,
   email: String,
-  myItems: {
-    type: [{type: Schema.Types.ObjectId, ref: 'Items'}]
+  myClothing: {
+    type: [{type: Schema.Types.ObjectId, ref: 'Clothing'}]
   },
   myToiletries: {
     type: [{type: Schema.Types.ObjectId, ref: 'Toiletries'}]
