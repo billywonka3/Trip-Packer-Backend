@@ -5,6 +5,8 @@ const tripSchema = new Schema({
   title: String,
   description: String,
   items: [{type: Schema.Types.ObjectId, ref: 'Item'}],
+  toiletries: [{type: Schema.Types.ObjectId, ref: 'Toiletries'}],
+  electronics: [{type: Schema.Types.ObjectId, ref: 'Electronics'}],
   owner: {type: Schema.Types.ObjectId, ref: 'User'}
 });
 

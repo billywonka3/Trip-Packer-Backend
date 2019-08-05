@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
   // this route is actualy localhost:3000/api/trips 
   //  because of the preface i put on this routes file in app.js
 
-  Trip.find().populate('items', 'toiletries', 'electronics')
+  Trip.find().populate('items').populate('toiletries').populate('electronics')
   .then((allTheTrips)=>{
     res.json(allTheTrips);
   })
@@ -25,7 +25,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/details/:id', (req, res, next)=>{
 
-  Trip.findById(req.params.id).populate('items', 'toiletries', 'electronics')
+  Trip.findById(req.params.id).populate('items').populate('toiletries').populate('electronics')
 
   .then((singleTrip)=>{
     res.json(singleTrip);

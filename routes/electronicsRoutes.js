@@ -31,7 +31,7 @@ router.post('/', (req, res, next)=>{
     .then((theElectronics)=>{ 
 
         Trip.findByIdAndUpdate(tripID, {
-            $push: {Electronicss: theElectronics._id}
+            $push: {electronics: theElectronics._id}
         })
 
         .then((response)=>{
