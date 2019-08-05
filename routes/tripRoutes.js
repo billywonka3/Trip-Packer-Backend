@@ -40,12 +40,28 @@ router.get('/details/:id', (req, res, next)=>{
 
 router.post('/', (req, res, next)=>{
 
+  // Pre-generated Item Lists (for Clothing, Toiletries, Electronics)
+  let elecA = new Electronics ({name: 'Laptop & Charger'})
+  elecA.save( (err)=>{ if(err){console.log(err);} } )
+  let elecB = new Electronics ({name: 'Phone Chargers'})
+  elecB.save( (err)=>{ if(err){console.log(err);} } )
+
+  let elecA = new Electronics ({name: 'Laptop & Charger'})
+  elecA.save( (err)=>{ if(err){console.log(err);} } )
+  let elecB = new Electronics ({name: 'Phone Chargers'})
+  elecB.save( (err)=>{ if(err){console.log(err);} } )
+
+  // ----------------------------------------------------------------
+
   Trip.create({
     title: req.body.theTitle,
     description: req.body.theDescription,
     items: [],
     toiletries: [],
-    electronics: [],
+    electronics: [elecA._id, elecB._id, ],
+    // user.myItems: [],
+    // user.myToiletries: [],
+    // user.myElectronics: [],
     owner: req.user._id
   })
 

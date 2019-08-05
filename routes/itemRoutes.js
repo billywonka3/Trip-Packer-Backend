@@ -33,7 +33,7 @@ router.post('/', (req, res, next)=>{
 
         Trip.findByIdAndUpdate(tripID, {
             $push: {items: theItem._id}
-        })
+        }, {new: true})
 
         .then((response)=>{
             res.json({response, theItem})

@@ -39,7 +39,10 @@ router.post('/signup', (req, res, next) => {
 
     const aNewUser = new User({
       username:userNameVar,
-      password: hashPass
+      password: hashPass,
+      myItems: [],
+      myToiletries: [],
+      myElectronics: [],
     });
 
     aNewUser.save(err => {
@@ -55,7 +58,6 @@ router.post('/signup', (req, res, next) => {
               res.status(500).json({ message: 'Login after signup went bad.' });
               return;
           }
-
           res.status(200).json({message: 'successfully logged in'});
       });
     });
