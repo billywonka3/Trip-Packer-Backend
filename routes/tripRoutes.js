@@ -66,7 +66,6 @@ router.post('/', (req, res, next)=>{
   let elecE = new Electronics ({name: 'Headphones'})
   elecE.save( (err)=>{ if(err){console.log(err);} } )
 
-
   // ----------------------------------------------------------------
 
   Trip.create({
