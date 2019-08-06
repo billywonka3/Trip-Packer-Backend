@@ -41,6 +41,7 @@ router.post('/signup', (req, res, next) => {
       username:userNameVar,
       password: hashPass,
     });
+console.log(aNewUser)
 
     aNewUser.save(err => {
       if (err) {
