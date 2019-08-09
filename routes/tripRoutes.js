@@ -41,19 +41,35 @@ router.get('/details/:id', (req, res, next)=>{
 router.post('/', (req, res, next)=>{
 
   // Pre-generated Item Lists (for Clothing, Toiletries, Electronics)
-  let clothCatA = new Clothing ({category: 'Tops'})
-  clothCatA.save( (err)=>{ if(err){console.log(err);} } )
-  let clothCatB = new Clothing ({category: 'Bottoms'})
-  clothCatB.save( (err)=>{ if(err){console.log(err);} } )
+  let clothA = new Clothing ({name: 'Shirts x4'})
+  clothA.save( (err)=>{ if(err){console.log(err);} } )
+  let clothB = new Clothing ({name: 'Pants x4'})
+  clothB.save( (err)=>{ if(err){console.log(err);} } )
+  let clothC = new Clothing ({name: 'Underpants x4'})
+  clothC.save( (err)=>{ if(err){console.log(err);} } )
+  let clothD = new Clothing ({name: 'Pairs of Socks x4'})
+  clothD.save( (err)=>{ if(err){console.log(err);} } )
 
-  let hygieneA = new Toiletries ({name: 'Toothbrushes'})
+  let hygieneA = new Toiletries ({name: 'Toothbrush'})
   hygieneA.save( (err)=>{ if(err){console.log(err);} } )
   let hygieneB = new Toiletries ({name: 'Toothpaste'})
   hygieneB.save( (err)=>{ if(err){console.log(err);} } )
-  let hygieneC = new Toiletries ({name: 'Shampoo'})
+  let hygieneC = new Toiletries ({name: 'Floss'})
   hygieneC.save( (err)=>{ if(err){console.log(err);} } )
-  let hygieneD = new Toiletries ({name: 'Nail Clippers'})
+  let hygieneD = new Toiletries ({name: 'Shampoo'})
   hygieneD.save( (err)=>{ if(err){console.log(err);} } )
+  let hygieneE = new Toiletries ({name: 'Nail Clipper'})
+  hygieneE.save( (err)=>{ if(err){console.log(err);} } )
+  let hygieneF = new Toiletries ({name: 'Tweezers'})
+  hygieneF.save( (err)=>{ if(err){console.log(err);} } )
+  let hygieneG = new Toiletries ({name: 'Q-tips or Cerumen Spoon'})
+  hygieneG.save( (err)=>{ if(err){console.log(err);} } )
+  let hygieneH = new Toiletries ({name: 'Eye Drops'})
+  hygieneH.save( (err)=>{ if(err){console.log(err);} } )
+  let hygieneI = new Toiletries ({name: 'Lip Balm'})
+  hygieneI.save( (err)=>{ if(err){console.log(err);} } )
+  let hygieneJ = new Toiletries ({name: 'Deodorant'})
+  hygieneJ.save( (err)=>{ if(err){console.log(err);} } )
 
   let elecA = new Electronics ({name: 'Laptop & Charger'})
   elecA.save( (err)=>{ if(err){console.log(err);} } )
@@ -61,18 +77,19 @@ router.post('/', (req, res, next)=>{
   elecB.save( (err)=>{ if(err){console.log(err);} } )
   let elecC = new Electronics ({name: 'Battery Pack'})
   elecC.save( (err)=>{ if(err){console.log(err);} } )
-  let elecD = new Electronics ({name: 'Tablet'})
+  let elecD = new Electronics ({name: 'Headphones'})
   elecD.save( (err)=>{ if(err){console.log(err);} } )
-  let elecE = new Electronics ({name: 'Headphones'})
+  let elecE = new Electronics ({name: 'Tablet'})
   elecE.save( (err)=>{ if(err){console.log(err);} } )
+
 
   // ----------------------------------------------------------------
 
   Trip.create({
     title: req.body.theTitle,
     description: req.body.theDescription,
-    clothing: [clothCatA._id, clothCatB._id, ],
-    toiletries: [hygieneA._id, hygieneB._id, hygieneC._id, hygieneD._id, ],
+    clothing: [clothA._id, clothB._id, clothC._id, clothD._id, ],
+    toiletries: [hygieneA._id, hygieneB._id, hygieneC._id, hygieneD._id, hygieneE._id, hygieneF._id, hygieneG._id, hygieneH._id, hygieneI._id, hygieneJ._id, ],
     electronics: [elecA._id, elecB._id, elecC._id, elecD._id, elecE._id, ],
     // user.myClothing: [],
     // user.myToiletries: [],
