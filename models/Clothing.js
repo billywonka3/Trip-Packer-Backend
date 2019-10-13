@@ -7,7 +7,6 @@ const clothingSchema = new Schema({
   // weight: Number,
 });
 
-
 const Clothing = mongoose.model('Clothing', clothingSchema);
 
 module.exports = Clothing;
