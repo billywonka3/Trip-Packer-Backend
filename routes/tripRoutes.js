@@ -85,7 +85,7 @@ router.post('/', (req, res, next)=>{
 
   let houseA = new Household ({name: 'Clear out the Fridge'})
   houseA.save( (err)=>{ if(err){console.log(err);} } )
-  let houseB = new Household ({name: 'Check for Snacks & Fruit left out in the open'})
+  let houseB = new Household ({name: 'Check for Fruit, Vegetables, etc. left out in the open'})
   houseB.save( (err)=>{ if(err){console.log(err);} } )
   let houseC = new Household ({name: 'Empty all Garbage Cans & Laundry Bins'})
   houseC.save( (err)=>{ if(err){console.log(err);} } )
