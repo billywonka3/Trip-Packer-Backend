@@ -7,6 +7,7 @@ const tripSchema = new Schema({
   clothing: [{type: Schema.Types.ObjectId, ref: 'Clothing'}],
   toiletries: [{type: Schema.Types.ObjectId, ref: 'Toiletries'}],
   electronics: [{type: Schema.Types.ObjectId, ref: 'Electronics'}],
+  household: [{type: Schema.Types.ObjectId, ref: 'Household'}],
   owner: {type: Schema.Types.ObjectId, ref: 'User'}
 });
 
