@@ -78,11 +78,11 @@ app.use(cors({
 const userRoutes = require('./routes/userRoutes');
 app.use('/api/auth', userRoutes);
 
-const signupRoutes = require('./routes/userRoutes');
-app.use('/api/signup', userRoutes);
+// const signupRoutes = require('./routes/userRoutes');
+// app.use('/api/signup', userRoutes);
 
-const loginRoutes = require('./routes/userRoutes');
-app.use('/api/login', userRoutes);
+// const loginRoutes = require('./routes/userRoutes');
+// app.use('/api/login', userRoutes);
 
 const tripRoutes = require('./routes/tripRoutes');
 app.use('/api/trips', tripRoutes);

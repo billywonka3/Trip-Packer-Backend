@@ -87,7 +87,7 @@ router.post('/', (req, res, next)=>{
 
   let houseA = new Household ({name: 'Clear out the Fridge'})
   houseA.save( (err)=>{ if(err){console.log(err);} } )
-  let houseB = new Household ({name: 'Check for Fruit, Vegetables, etc. left out in the open'})
+  let houseB = new Household ({name: 'Check for Fruit & Perishable Foods left out in the open'})
   houseB.save( (err)=>{ if(err){console.log(err);} } )
   let houseC = new Household ({name: 'Empty all Garbage Cans & Laundry Bins'})
   houseC.save( (err)=>{ if(err){console.log(err);} } )
@@ -95,7 +95,7 @@ router.post('/', (req, res, next)=>{
   houseD.save( (err)=>{ if(err){console.log(err);} } )
   let houseE = new Household ({name: 'Clear the Dishwasher & All Water Dispensing Devices'})
   houseE.save( (err)=>{ if(err){console.log(err);} } )
-  let houseF = new Household ({name: 'Turn off all Electronics'})
+  let houseF = new Household ({name: 'Turn off all Electronics & Powerstrips'})
   houseF.save( (err)=>{ if(err){console.log(err);} } )
   let houseG = new Household ({name: 'Set A/C to 78F (for energy efficiency)'})
   houseG.save( (err)=>{ if(err){console.log(err);} } )
