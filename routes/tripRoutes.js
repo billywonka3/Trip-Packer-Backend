@@ -41,7 +41,7 @@ router.get('/details/:id', (req, res, next)=>{
 
 router.post('/', (req, res, next)=>{
 
-  // Pre-generated Item Lists (for Clothing, Toiletries, Electronics, Household)
+  // Pre-generated Item Lists (for Clothing, Toiletries, Electronics, Home-Prep Tasks)
   let clothA = new Clothing ({name: 'Shirts x4'})
   clothA.save( (err)=>{ if(err){console.log(err);} } )
   let clothB = new Clothing ({name: 'Pants x4'})
@@ -87,7 +87,7 @@ router.post('/', (req, res, next)=>{
 
   let houseA = new Household ({name: 'Clear out the Fridge'})
   houseA.save( (err)=>{ if(err){console.log(err);} } )
-  let houseB = new Household ({name: 'Check for Fruit & Perishable Foods left out in the open'})
+  let houseB = new Household ({name: 'Check for Fruit & Perishables left out in the open'})
   houseB.save( (err)=>{ if(err){console.log(err);} } )
   let houseC = new Household ({name: 'Empty all Garbage Cans & Laundry Bins'})
   houseC.save( (err)=>{ if(err){console.log(err);} } )
