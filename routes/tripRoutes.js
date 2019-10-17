@@ -50,6 +50,8 @@ router.post('/', (req, res, next)=>{
   clothC.save( (err)=>{ if(err){console.log(err);} } )
   let clothD = new Clothing ({name: 'Pairs of Socks x4'})
   clothD.save( (err)=>{ if(err){console.log(err);} } )
+  let clothE = new Clothing ({name: 'Swimsuit'})
+  clothE.save( (err)=>{ if(err){console.log(err);} } )
 
   let hygieneA = new Toiletries ({name: 'Toothbrush'})
   hygieneA.save( (err)=>{ if(err){console.log(err);} } )
@@ -97,7 +99,7 @@ router.post('/', (req, res, next)=>{
   houseE.save( (err)=>{ if(err){console.log(err);} } )
   let houseF = new Household ({name: 'Turn off all Electronics & Powerstrips'})
   houseF.save( (err)=>{ if(err){console.log(err);} } )
-  let houseG = new Household ({name: 'Set A/C to 78F (for energy efficiency)'})
+  let houseG = new Household ({name: 'Set Air Conditioner to 25°C or 78°F (for energy efficiency)'})
   houseG.save( (err)=>{ if(err){console.log(err);} } )
   let houseH = new Household ({name: 'Lock all Windows & Doors'})
   houseH.save( (err)=>{ if(err){console.log(err);} } )
@@ -107,7 +109,7 @@ router.post('/', (req, res, next)=>{
   Trip.create({
     title: req.body.theTitle,
     description: req.body.theDescription,
-    clothing: [clothA._id, clothB._id, clothC._id, clothD._id, ],
+    clothing: [clothA._id, clothB._id, clothC._id, clothD._id, clothE._id, ],
     toiletries: [hygieneA._id, hygieneB._id, hygieneC._id, hygieneD._id, hygieneE._id, hygieneF._id, hygieneG._id, hygieneH._id, hygieneI._id, hygieneJ._id, hygieneK._id, ],
     electronics: [elecA._id, elecB._id, elecC._id, elecD._id, elecE._id, ],
     household: [houseA._id, houseB._id, houseC._id, houseD._id, houseE._id, houseF._id, houseG._id, houseH._id, ],
