@@ -5,6 +5,7 @@ const Trip = require('../models/Trip');
 const Clothing    = require('../models/Clothing');
 const Toiletries    = require('../models/Toiletries');
 const Electronics    = require('../models/Electronics');
+const Specials    = require('../models/Specials');
 const Household    = require('../models/Household');
 
 /* GET home page */
@@ -12,7 +13,7 @@ router.get('/', (req, res, next) => {
   // this route is actualy localhost:3000/api/trips 
   //  because of the preface i put on this routes file in app.js
 
-  Trip.find().populate('clothing').populate('toiletries').populate('electronics').populate('household')
+  Trip.find().populate('clothing').populate('electronics').populate('toiletries').populate('specials').populate('household')
   .then((allTheTrips)=>{
     res.json(allTheTrips);
   })
@@ -26,7 +27,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/details/:id', (req, res, next)=>{
 
-  Trip.findById(req.params.id).populate('clothing').populate('toiletries').populate('electronics').populate('household')
+  Trip.findById(req.params.id).populate('clothing').populate('electronics').populate('toiletries').populate('specials').populate('household')
 
   .then((singleTrip)=>{
     res.json(singleTrip);
@@ -41,7 +42,7 @@ router.get('/details/:id', (req, res, next)=>{
 
 router.post('/', (req, res, next)=>{
 
-  // Pre-generated Item Lists (for Clothing, Toiletries, Electronics, Home-Prep Tasks)
+  // Pre-generated Item Lists (for Clothing, Electronics, Toiletries, Other, Home-Prep Tasks)
   let clothA = new Clothing ({name: 'Shirts x4'})
   clothA.save( (err)=>{ if(err){console.log(err);} } )
   let clothB = new Clothing ({name: 'Pants x4'})
@@ -52,6 +53,17 @@ router.post('/', (req, res, next)=>{
   clothD.save( (err)=>{ if(err){console.log(err);} } )
   let clothE = new Clothing ({name: 'Swimsuit'})
   clothE.save( (err)=>{ if(err){console.log(err);} } )
+
+  let elecA = new Electronics ({name: 'Laptop & Charger'})
+  elecA.save( (err)=>{ if(err){console.log(err);} } )
+  let elecB = new Electronics ({name: 'Phone Chargers'})
+  elecB.save( (err)=>{ if(err){console.log(err);} } )
+  let elecC = new Electronics ({name: 'Battery Pack'})
+  elecC.save( (err)=>{ if(err){console.log(err);} } )
+  let elecD = new Electronics ({name: 'Headphones'})
+  elecD.save( (err)=>{ if(err){console.log(err);} } )
+  let elecE = new Electronics ({name: 'Tablet'})
+  elecE.save( (err)=>{ if(err){console.log(err);} } )
 
   let hygieneA = new Toiletries ({name: 'Toothbrush'})
   hygieneA.save( (err)=>{ if(err){console.log(err);} } )
@@ -76,16 +88,18 @@ router.post('/', (req, res, next)=>{
   let hygieneK = new Toiletries ({name: 'Shampoo & Conditioner'})
   hygieneK.save( (err)=>{ if(err){console.log(err);} } )
 
-  let elecA = new Electronics ({name: 'Laptop & Charger'})
-  elecA.save( (err)=>{ if(err){console.log(err);} } )
-  let elecB = new Electronics ({name: 'Phone Chargers'})
-  elecB.save( (err)=>{ if(err){console.log(err);} } )
-  let elecC = new Electronics ({name: 'Battery Pack'})
-  elecC.save( (err)=>{ if(err){console.log(err);} } )
-  let elecD = new Electronics ({name: 'Headphones'})
-  elecD.save( (err)=>{ if(err){console.log(err);} } )
-  let elecE = new Electronics ({name: 'Tablet'})
-  elecE.save( (err)=>{ if(err){console.log(err);} } )
+  let specialsA = new Specials ({name: 'ID &/or Passport'})
+  specialsA.save( (err)=>{ if(err){console.log(err);} } )
+  let specialsB = new Specials ({name: 'Tickets &/or Boarding Pass'})
+  specialsB.save( (err)=>{ if(err){console.log(err);} } )
+  let specialsC = new Specials ({name: 'Reservation Paperwork'})
+  specialsC.save( (err)=>{ if(err){console.log(err);} } )
+  let specialsD = new Specials ({name: 'Credit &/or Debit Cards'})
+  specialsD.save( (err)=>{ if(err){console.log(err);} } )
+  let specialsE = new Specials ({name: 'Cash &/or Travelers Cheques'})
+  specialsE.save( (err)=>{ if(err){console.log(err);} } )
+  let specialsF = new Specials ({name: 'Keys'})
+  specialsF.save( (err)=>{ if(err){console.log(err);} } )
 
   let houseA = new Household ({name: 'Clear out the Fridge'})
   houseA.save( (err)=>{ if(err){console.log(err);} } )
@@ -112,6 +126,7 @@ router.post('/', (req, res, next)=>{
     clothing: [clothA._id, clothB._id, clothC._id, clothD._id, clothE._id, ],
     toiletries: [hygieneA._id, hygieneB._id, hygieneC._id, hygieneD._id, hygieneE._id, hygieneF._id, hygieneG._id, hygieneH._id, hygieneI._id, hygieneJ._id, hygieneK._id, ],
     electronics: [elecA._id, elecB._id, elecC._id, elecD._id, elecE._id, ],
+    specials: [specialsA._id, specialsB._id, specialsC._id, specialsD._id, specialsE._id, specialsF._id, ],
     household: [houseA._id, houseB._id, houseC._id, houseD._id, houseE._id, houseF._id, houseG._id, houseH._id, ],
     // user.myClothing: [],
     // user.myToiletries: [],
@@ -154,11 +169,14 @@ router.delete('/:id', (req, res, next)=>{
     theTrip.clothing.forEach(eachClothingID => {
       Clothing.findByIdAndRemove(eachClothingID)
     })
+    theTrip.electronics.forEach(eachElectronicsID => {
+      Electronics.findByIdAndRemove(eachElectronicsID)
+    })
     theTrip.toiletries.forEach(eachToiletriesID => {
       Toiletries.findByIdAndRemove(eachToiletriesID)
     })
-    theTrip.electronics.forEach(eachElectronicsID => {
-      Electronics.findByIdAndRemove(eachElectronicsID)
+    theTrip.specials.forEach(eachSpecialsID => {
+      Specials.findByIdAndRemove(eachSpecialsID)
     })
     theTrip.household.forEach(eachHouseholdID => {
       Household.findByIdAndRemove(eachHouseholdID)

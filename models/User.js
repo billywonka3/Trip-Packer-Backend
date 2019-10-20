@@ -14,6 +14,9 @@ const userSchema = new Schema({
   myElectronics: {
     type: [{type: Schema.Types.ObjectId, ref: 'Electronics'}]
   },
+  mySpecials: {
+    type: [{type: Schema.Types.ObjectId, ref: 'Specials'}]
+  },
   myHousehold: {
     type: [{type: Schema.Types.ObjectId, ref: 'Household'}]
   },
